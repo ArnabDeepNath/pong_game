@@ -42,7 +42,7 @@ function drawText(
   color,
   fontSize = 60,
   fontWeight = 'bold',
-  font = 'Courier New',
+  font = 'Poppins',
 ) {
   context.fillStyle = color;
   context.font = `${fontWeight} ${fontSize}px ${font}`;
@@ -146,7 +146,7 @@ function update() {
     ball.velocityY = ball.speed * Math.sin(collisionAngle);
 
     // Increase ball speed and limit to max speed
-    ball.speed += 0.2;
+    ball.speed += 0.8;
     if (ball.speed > maxBallSpeed) {
       ball.speed = maxBallSpeed;
     }
