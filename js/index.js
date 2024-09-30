@@ -2,6 +2,7 @@ const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+const socket = io();
 
 const paddleWidth = 18,
   paddleHeight = 120,
@@ -128,7 +129,7 @@ function update() {
     ball.velocityX = direction * ball.speed * Math.cos(collisionAngle);
     ball.velocityY = ball.speed * Math.sin(collisionAngle);
 
-    ball.speed += 2;
+    ball.speed += 0.1;
     if (ball.speed > maxBallSpeed) {
       ball.speed = maxBallSpeed;
     }
@@ -166,6 +167,18 @@ function gameLoop() {
   update();
   render();
 }
+
+socket.on('opponentMove', (data) => {
+  com.y = data.y; // Handle opponent paddle movement
+});
+
+socket.on('ballState', (ballData) => {
+  ball.x = ballData.x;
+  ball.y = ballData.y;
+  ball.velocityX = ballData.velocityX;
+  ball.velocityY = ballData.velocityY;
+  ball.speed = ballData.speed;
+});
 
 const framePerSec = 120;
 setInterval(gameLoop, 1000 / framePerSec);
