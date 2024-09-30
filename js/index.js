@@ -66,7 +66,7 @@ const user = createPaddle(
   canvas.height / 2 - paddleHeight / 2,
   paddleWidth,
   paddleHeight,
-  'WHITE',
+  'BLUE',
 );
 
 const com = createPaddle(
@@ -164,7 +164,7 @@ function render() {
     user.score,
     canvas.width / 4,
     canvas.height / 2,
-    'GRAY',
+    'BLUE',
     120,
     'bold',
   );
@@ -172,7 +172,7 @@ function render() {
     com.score,
     (3 * canvas.width) / 4,
     canvas.height / 2,
-    'GRAY',
+    'BLUE',
     120,
     'bold',
   );
